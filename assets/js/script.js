@@ -27,7 +27,7 @@ document.getElementById("button").addEventListener("click", function(){
   var calc_ingridients = check_ingredients(ingredients);
   
   var discount = verify_discount(discount_coupon, coupons, discoun_percentage);
-
+  
   var total_price = calc_bill(default_price, calc_ingridients, discount);
   
   bill_display(total_price, price_info);
@@ -42,13 +42,12 @@ function verify_discount(str, arr, discount){
   if((arr.includes(input_value))){
        return  discount.toFixed(2);
   }else{
-    return 1.00;
+    return 0;
   }
 }
 
 /* function verify_discount(str, arr, price, discount){  
   var input_value = str.value.trim();
-
   if((arr.includes(input_value))){
        return (price - (price * discount)).toFixed(2);
   }else{
@@ -64,8 +63,13 @@ function bill_display(total, target_price){
 
 //funzione prezzo totale
 function calc_bill(num1, num2, numDiscount){
-  var tot = (num1 + num2)* numDiscount;
-  return tot;
+
+  var tot = num1 + num2;
+  
+  var discounted_price = tot - tot * numDiscount;
+
+  return discounted_price;
+
 }
 
 /* function calc_bill(num1, num2){
