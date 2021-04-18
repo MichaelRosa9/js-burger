@@ -9,13 +9,15 @@ var price_info = document.getElementById("price");
 var default_price = 10;
 
 
-console.log(ingredients);
 
 
 //esecuzione calcolo con il click
 document.getElementById("button").addEventListener("click", function(){
   verryfy_input_text(input_nameBurger, burger_choice);
+  
   var calc_ingridients = check_ingredients(ingredients);
+  
+  console.log(calc_ingridients);
 
   var total_price = calc_bill(default_price, calc_ingridients);
 
@@ -39,9 +41,8 @@ function calc_bill(num1, num2){
 
 //funzione per il risultato e la somma totale di solo gli ingredienti
 function check_ingredients(arr){
-
+  
   var sum = 0;
-
   for(var i = 0; i< arr.length; i++){
 
     var ingredient = arr[i];
@@ -49,10 +50,6 @@ function check_ingredients(arr){
     if(ingredient.checked === true){
 
       sum += parseInt(ingredient.value);
-
-    }else{
-
-      sum -= parseInt(ingredient.value);
 
     }
 
